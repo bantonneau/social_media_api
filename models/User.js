@@ -1,19 +1,19 @@
-const { Schema } = require('mongoose');
-const thoughtSchema = require('./Thought');
+const { Schema, model } = require('mongoose');
+const validator = require('validator');
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
       unique: true,
+      required: true,
       trim: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     thoughts: [
       {
@@ -31,7 +31,9 @@ const userSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true,
     },
+    id: false,
   }
 );
 
@@ -39,4 +41,6 @@ userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
 });
 
-module.exports = userSchema;
+const User = model('User', userSchema);
+
+module.exports = User;
