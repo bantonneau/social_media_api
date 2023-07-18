@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/bantonneau/social_media_api/issues"
   },
-  "homepage": "https://github.com/bantonneau/social_media_api#readme"
+  "homepage": "https://github.com/bantonneau/social_media_api#readme",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "validator": "^13.9.0"
+  }
 }
