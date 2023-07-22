@@ -9,13 +9,15 @@ module.exports = {
 
   getThoughtById(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
-      .then(thought =>
-        !thought
-          ? res.status(404).json({ message: 'No thought with this ID!' })
-          : res.json(thought)
-      )
+      .then(thought => {
+        if (!thought) {
+          return res.status(404).json({ message: 'No thought with this ID!' });
+        }
+        res.json(thought);
+      })
       .catch(err => res.status(500).json(err));
   },
+  
 
   createThought(req, res) {
     Thought.create(req.body)
