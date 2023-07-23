@@ -25,18 +25,12 @@ The Social Network API is a server-side application that serves as the back end 
 npm install
 ```
 
-4. Seed the database by running the following command:
-
-```bash
-node seeds.js
-```
-
 ## Usage
 
 To start the server, run the following command in your terminal:
 
 ```bash
-npm start
+node index.js
 ```
 
 Once the server is running, you can interact with the API using a tool like Insomnia Core or Postman.
